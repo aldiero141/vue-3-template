@@ -6,8 +6,8 @@
     <template v-if="mode === 'form'">
       <Form />
     </template>
-    <!-- <button @click="setMode('form')">BUTTON</button> -->
-    <!-- {{ mode }} -->
+    <template v-if="mode === 'OTP'"> OTP </template>
+    <template v-if="mode === 'DOB'"> DOB </template>
   </main>
 </template>
 
