@@ -12,8 +12,8 @@
 </template>
 
 <script setup>
-import ListMenu from "../components/ListMenu.vue";
 import Form from "../components/Form.vue";
+import ListMenu from "../components/ListMenu.vue";
 import { storeToRefs } from "pinia";
 import { useModeStore } from "../stores/mode";
 
