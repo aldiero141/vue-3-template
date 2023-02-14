@@ -7,7 +7,7 @@
       <Form @back="onListMenu" />
     </template>
     <template v-if="mode === 'OTP'"> <OtpPage @back="onListMenu" /> </template>
-    <template v-if="mode === 'DOB'"> DOB </template>
+    <!-- <template v-if="mode === 'DOB'"> DOB </template> -->
   </main>
 </template>
 

@@ -15,7 +15,7 @@
           v-if="v$.name.$dirty && v$.name.$invalid"
           class="text-sm text-red-500 capitalize"
         >
-          Nama Tidak Boleh Kosong
+          Name Can't be Empty
         </div>
       </div>
       <div class="flex flex-col mb-4">
@@ -29,7 +29,7 @@
           v-if="v$.name.$dirty && v$.phone.$invalid"
           class="text-sm text-red-500 capitalize"
         >
-          Phone Tidak Boleh Kosong
+          Phone Can't be Empty
         </div>
       </div>
       <div class="flex flex-col mb-4">
@@ -43,7 +43,7 @@
           v-if="v$.name.$dirty && v$.address.$invalid"
           class="text-sm text-red-500 capitalize"
         >
-          Alamat Tidak Boleh Kosong
+          Address Can't be Empty
         </div>
       </div>
       <div class="flex flex-col mb-4">
@@ -57,7 +57,7 @@
           v-if="v$.name.$dirty && v$.age.$invalid"
           class="text-sm text-red-500 capitalize"
         >
-          Umur Tidak Boleh Kosong
+          Age Can't be Empty
         </div>
       </div>
 
@@ -68,11 +68,13 @@
 </template>
 
 <script setup>
+import { reactive, computed } from "vue";
 import { useVuelidate } from "@vuelidate/core";
 import { required } from "@vuelidate/validators";
-import { ref, reactive, computed } from "vue";
+import { useAlertStore } from "../stores/alert";
 import Button from "./Button.vue";
 
+const store = useAlertStore();
 const emit = defineEmits(["back"]);
 const form = reactive({
   name: "",
@@ -92,10 +94,20 @@ const v$ = useVuelidate(rules, form);
 
 async function onSubmit() {
   const isFormCorrect = await v$.value.$validate();
-  if (!isFormCorrect) {
-    alert("Error");
+  if (isFormCorrect) {
+    const alert = {
+      status: true,
+      type: "success",
+      message: `Form Submition Success `,
+    };
+    store.setAlert(alert);
   } else {
-    alert("Success");
+    const alert = {
+      status: true,
+      type: "error",
+      message: `Form Submition Invalid`,
+    };
+    store.setAlert(alert);
   }
 }
 </script>
