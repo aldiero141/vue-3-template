@@ -1,6 +1,6 @@
 <template>
   <div
-    class="cursor-pointer bg-blue-400 rounded-lg mb-6 p-4 text-white capitalize font-bold"
+    class="cursor-pointer bg-blue-400 rounded-lg mb-6 p-3 text-white capitalize font-bold"
     v-for="(item, i) in items"
     :key="i"
     @click.stop="$emit('click', item)"

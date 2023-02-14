@@ -1,12 +1,12 @@
 <template>
   <main>
-    <template v-if="mode === 'list'">
+    <template v-if="mode === 'menu'">
       <ListMenu />
     </template>
     <template v-if="mode === 'form'">
-      <Form @back="onListMenu" />
+      <Form @back="onMenu" />
     </template>
-    <template v-if="mode === 'OTP'"> <OtpPage @back="onListMenu" /> </template>
+    <template v-if="mode === 'OTP'"> <OtpPage @back="onMenu" /> </template>
     <!-- <template v-if="mode === 'DOB'"> DOB </template> -->
   </main>
 </template>
@@ -21,7 +21,7 @@ import { useModeStore } from "../stores/mode";
 const store = useModeStore();
 const { mode } = storeToRefs(store);
 
-function onListMenu() {
-  store.setMode("list");
+function onMenu() {
+  store.setMode("menu");
 }
 </script>
