@@ -7,8 +7,6 @@
       <div class="text-size-14 text-weight-400 text-color-black mb-4">
         Untuk mengisi formulir pengajuan Kartu, Kode OTP yang anda terima pada
         nomor HP anda
-        <br />
-        <!-- <span class="text-color-black text-weight-600"> (format: DDMMYY) </span> -->
       </div>
 
       <div class="flex flex-col justify-center items-center mb-6">
@@ -27,7 +25,12 @@
 
       <div class="flex flex-col justify-center items-center">
         <Button class="my-4" :text="'Verify'" @click="onVerify" />
-        <Button class="mb-4" :text="'Back'" @click="$emit('back')" />
+        <Button
+          class="mb-4"
+          :text="'Back'"
+          :type="'danger'"
+          @click="$emit('back')"
+        />
       </div>
     </div>
   </div>

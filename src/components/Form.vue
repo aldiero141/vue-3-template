@@ -62,7 +62,12 @@
       </div>
 
       <Button class="my-4" :text="'Submit'" @click="onSubmit" />
-      <Button class="mb-4" :text="'Back'" @click="$emit('back')" />
+      <Button
+        class="mb-4"
+        :text="'Back'"
+        :type="'danger'"
+        @click="$emit('back')"
+      />
     </div>
   </div>
 </template>

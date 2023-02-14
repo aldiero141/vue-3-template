@@ -1,7 +1,10 @@
 <template>
   <button
     class="cursor-pointer bg-blue-400 rounded-lg p-2 text-white font-bold text-sm uppercase w-full"
-    :class="disabled ? 'bg-gray-300' : ''"
+    :class="{
+      'bg-gray-300': disabled,
+      'bg-red-500': type == 'danger',
+    }"
     :disabled="disabled"
     @click.stop="$emit('click')"
   >
@@ -12,8 +15,9 @@
 <script setup>
 // ---- PROPS
 const props = defineProps({
-  text: String,
   disabled: false,
+  text: String,
+  type: String,
 });
 
 // ---- EMIT
