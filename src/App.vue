@@ -1,11 +1,45 @@
 <template>
   <div>
+    <Alert v-if="status" :type="type" :message="message" />
     <RouterView />
   </div>
 </template>
 
 <script setup>
 import { RouterView } from "vue-router";
+import { useAlertStore } from "./stores/alert";
+import { storeToRefs } from "pinia";
+import { onMounted, watch, reactive } from "vue";
+import Alert from "./components/Alert.vue";
+
+const store = useAlertStore();
+const { status, type, message } = storeToRefs(store);
+
+watch(status, (newStatus, oldStatus) => {
+  if (newStatus) {
+    setTimeout(() => {
+      store.setAlert({
+        status: false,
+        type: "",
+        message: "",
+      });
+    }, 1000);
+  }
+});
+
+// if (newVal) {
+//   setTimeout(() => {
+//     store.setAlert({
+//       status: false,
+//       type: "",
+//       message: "",
+//     });
+//   }, 2000);
+// }
+
+onMounted(() => {
+  // console.log(store);
+});
 </script>
 
 <style scoped>

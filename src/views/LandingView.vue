@@ -22,8 +22,6 @@ const store = useModeStore();
 const { mode } = storeToRefs(store);
 
 function onListMenu() {
-  // console.log(mode.value);
-  mode.value = "list";
+  store.setMode("list");
 }
-// const { setMode } = store;
 </script>

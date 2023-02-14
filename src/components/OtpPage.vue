@@ -13,7 +13,6 @@
 
       <div class="flex flex-col justify-center items-center mb-6">
         <OTP :digit-count="5" @update:otp="otpValue = $event" />
-        <p>The current OTP value is: {{ otpValue }}</p>
       </div>
 
       <!-- <div v-if="alert" class="alert-error">
@@ -37,15 +36,30 @@
 <script setup>
 import OTP from "./OTP.vue";
 import Button from "./Button.vue";
+import { useAlertStore } from "../stores/alert";
 import { ref } from "vue";
 
+const emit = defineEmits(["click", "back"]);
 const otpValue = ref("");
-const emit = defineEmits(["click"]);
+const store = useAlertStore();
+const { setAlert } = store;
 
 function onVerify() {
   if (otpValue.value === "12345") {
-    console.log("success");
-    emit("click");
+    const alert = {
+      status: true,
+      type: "success",
+      message: `OTP Match, Verification Success `,
+    };
+    setAlert(alert);
+  }
+  if (otpValue.value !== "12345") {
+    const alert = {
+      status: true,
+      type: "error",
+      message: `OTP don't Match, Verification Failed `,
+    };
+    setAlert(alert);
   }
 }
 </script>

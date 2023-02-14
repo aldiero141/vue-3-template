@@ -73,13 +73,13 @@ import { required } from "@vuelidate/validators";
 import { ref, reactive, computed } from "vue";
 import Button from "./Button.vue";
 
+const emit = defineEmits(["back"]);
 const form = reactive({
   name: "",
   phone: "",
   address: "",
   age: "",
 });
-
 const rules = computed(() => {
   return {
     name: { required },
@@ -88,7 +88,6 @@ const rules = computed(() => {
     age: { required },
   };
 });
-
 const v$ = useVuelidate(rules, form);
 
 async function onSubmit() {
