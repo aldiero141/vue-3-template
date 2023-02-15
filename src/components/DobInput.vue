@@ -1,14 +1,24 @@
 <template>
-  <div ref="otpCont">
+  <div class="flex flex-row">
+    <div
+      class="w-[2.8125rem] text-center"
+      v-for="(word, index) in dobsLabel"
+      :key="index"
+    >
+      {{ word }}
+    </div>
+  </div>
+  <div ref="dobCont">
     <input
       v-model="digits[idx]"
       v-for="(el, idx) in digits"
+      :key="el + idx"
       type="text"
       class="digit-box text-center"
       maxlength="1"
       :class="{ bounce: digits[idx] !== null }"
-      :key="el + idx"
       :autofocus="idx === 0"
+      :disabled="isDisabled(idx)"
       @keydown="handleKeyDown($event, idx)"
     />
   </div>
@@ -18,23 +28,27 @@
 import { ref, reactive } from "vue";
 const props = defineProps({
   default: String,
-  digitCount: {
-    type: Number,
-    required: true,
-  },
+  masking: String,
 });
 const digits = reactive([]);
-if (props.default && props.default.length === props.digitCount) {
-  for (let i = 0; i < props.digitCount; i++) {
-    digits[i] = props.default.charAt(i);
-  }
-} else {
-  for (let i = 0; i < props.digitCount; i++) {
+const dobsLabel = ["D", "D", "M", "M", "Y", "Y"];
+const digitCount = 6;
+
+for (let i = 0; i < digitCount; i++) {
+  if (props.masking[i] == "x") {
+    digits[i] = "•";
+  } else {
     digits[i] = null;
   }
 }
-const otpCont = ref(null);
-const emit = defineEmits(["update:otp"]);
+
+function isDisabled(index) {
+  if (digits[index] == "•") return true;
+  return false;
+}
+
+const dobCont = ref(null);
+const emit = defineEmits(["update:dob"]);
 const isDigitsFull = function () {
   for (const elem of digits) {
     if (elem == null || elem == undefined) {
@@ -54,20 +68,33 @@ function handleKeyDown(event, index) {
 
   if (event.key === "Backspace") {
     digits[index] = null;
-
-    if (index != 0) {
-      otpCont.value.children[index - 1].focus();
+    for (let i = index; 0 < i < digits.length; i--) {
+      if (i == 0) return;
+      if (digits[i - 1] != "•") {
+        return dobCont.value.children[i - 1].focus();
+      }
     }
     return;
   }
 
   if (new RegExp("^([0-9])$").test(event.key)) {
     digits[index] = event.key;
-    if (index != props.digitCount - 1) {
-      otpCont.value.children[index + 1].focus();
+    for (let i = index; i < digits.length; i++) {
+      if (digits[i + 1] != "•" && i + 1 < digits.length) {
+        return dobCont.value.children[i + 1].focus();
+      }
     }
+
     if (isDigitsFull()) {
-      emit("update:otp", digits.join(""));
+      let birth = "";
+      this.digits.forEach((dob, index) => {
+        if (dob === "•") {
+          birth += 0;
+        } else {
+          birth += digits[index];
+        }
+      });
+      emit("update:dob", birth);
     }
   }
 }
@@ -75,14 +102,14 @@ function handleKeyDown(event, index) {
 
 <style scoped>
 .digit-box {
-  height: 2.75em;
-  width: 2.75em;
+  height: 2.625em;
+  width: 2.625em;
   border: 2px solid black;
   display: inline-block;
   border-radius: 5px;
   margin: 5px;
-  padding: 1rem;
-  font-size: 1rem;
+  padding: 0.6825rem;
+  font-size: 0.825rem;
 }
 .digit-box:focus {
   outline: 3px solid black;

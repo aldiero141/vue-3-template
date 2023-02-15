@@ -15,7 +15,7 @@ import Alert from "./components/Alert.vue";
 const store = useAlertStore();
 const { status, type, message } = storeToRefs(store);
 
-watch(status, (newStatus, oldStatus) => {
+watch(status, (newStatus) => {
   if (newStatus) {
     setTimeout(() => {
       store.setAlert({

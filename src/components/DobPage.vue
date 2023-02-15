@@ -1,6 +1,6 @@
 <template>
   <div class="flex flex-col justify-center items-center min-h-[80vh]">
-    <h1 class="mb-4 font-extrabold text-2xl">OTP Verification</h1>
+    <h1 class="mb-4 font-extrabold text-2xl">DOB Verification</h1>
     <div
       class="rounded-lg shadow-xl p-4 max-w-[20rem] border-2 border-gray-300 border-opacity-25"
       elevation="0"
@@ -8,13 +8,12 @@
       <div
         class="text-size-14 text-weight-400 text-color-black mb-4 text-justify"
       >
-        Untuk mengisi formulir pengajuan Kartu, Kode OTP yang anda terima pada
-        nomor HP anda
-        <span class="text-slate-200">hint: [12345] </span>
+        Untuk mengisi formulir pengajuan Kartu, Isikan tanggal lahir anda pada
+        kolom kosong <span class="text-slate-200">hint: [14-04-99] </span>
       </div>
 
       <div class="flex flex-col justify-center items-center mb-6">
-        <OTP :digit-count="5" @update:otp="otpValue = $event" />
+        <DobInput :masking="'0xxxx0'" @update:dob="dobValue = $event" />
       </div>
 
       <div class="flex flex-col justify-center items-center">
@@ -31,30 +30,30 @@
 </template>
 
 <script setup>
-import OTP from "./OTP.vue";
 import Button from "./Button.vue";
+import DobInput from "./DobInput.vue";
 import { useAlertStore } from "../stores/alert";
 import { ref } from "vue";
 
 const emit = defineEmits(["click", "back"]);
-const otpValue = ref("");
+const dobValue = ref("");
 const store = useAlertStore();
 const { setAlert } = store;
 
 function onVerify() {
-  if (otpValue.value === "12345") {
+  if (dobValue.value === "100009") {
     const alert = {
       status: true,
       type: "success",
-      message: `OTP Match, Verification Success `,
+      message: `DOB Match, Verification Success `,
     };
     setAlert(alert);
   }
-  if (otpValue.value !== "12345") {
+  if (dobValue.value !== "100009") {
     const alert = {
       status: true,
       type: "error",
-      message: `OTP don't Match, Verification Failed `,
+      message: `DOB don't Match, Verification Failed `,
     };
     setAlert(alert);
   }

@@ -16,7 +16,7 @@ import { computed, ref } from "vue";
 // ---- Composition API
 export const useModeStore = defineStore("mode", () => {
   // SETTER
-  const mode = ref("menu");
+  const mode = ref("DOB");
   // GETTER
   const getMode = computed(() => mode.value);
   // ACTION
