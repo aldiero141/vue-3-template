@@ -1,7 +1,7 @@
 <template>
   <button
     v-for="(item, i) in items"
-    class="cursor-pointer bg-blue-400 rounded-lg mb-6 p-3 text-white capitalize font-bold"
+    class="cursor-pointer bg-blue-400 hover:bg-blue-500 rounded-lg mb-6 p-3 text-white capitalize font-bold"
     :key="i"
     @click.stop="$emit('click', item)"
   >

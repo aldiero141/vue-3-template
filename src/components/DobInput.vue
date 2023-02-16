@@ -16,7 +16,6 @@
       type="text"
       class="digit-box text-center"
       maxlength="1"
-      :class="{ bounce: digits[idx] !== null }"
       :autofocus="idx === 0"
       :disabled="isDisabled(idx)"
       @keydown="handleKeyDown($event, idx)"
@@ -104,7 +103,7 @@ function handleKeyDown(event, index) {
 .digit-box {
   height: 2.625em;
   width: 2.625em;
-  border: 2px solid black;
+  border: 1px solid black;
   display: inline-block;
   border-radius: 5px;
   margin: 5px;
@@ -112,17 +111,6 @@ function handleKeyDown(event, index) {
   font-size: 0.825rem;
 }
 .digit-box:focus {
-  outline: 3px solid black;
-}
-.bounce {
-  animation: pulse 0.3s ease-in-out alternate;
-}
-@keyframes pulse {
-  0% {
-    transform: scale(1);
-  }
-  100% {
-    transform: scale(1.1);
-  }
+  outline: 2px solid #60a6fa;
 }
 </style>

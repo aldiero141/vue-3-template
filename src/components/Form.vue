@@ -8,7 +8,7 @@
         <label class="mb-2">Name</label>
         <input
           v-model="form.name"
-          class="border-2 border-blue-500 rounded px-2"
+          class="border-2 border-black focus:border-blue-500 rounded px-2"
           type="text"
         />
         <div
@@ -22,7 +22,7 @@
         <label class="mb-2">Phone</label>
         <input
           v-model="form.phone"
-          class="border-2 border-blue-500 rounded px-2"
+          class="border-2 border-black focus:border-blue-500 rounded px-2"
           type="text"
         />
         <div
@@ -36,7 +36,7 @@
         <label class="mb-2">Address</label>
         <input
           v-model="form.address"
-          class="border-2 border-blue-500 rounded px-2"
+          class="border-2 border-black focus:border-blue-500 rounded px-2"
           type="text"
         />
         <div
@@ -50,7 +50,7 @@
         <label class="mb-2">Age</label>
         <input
           v-model="form.age"
-          class="border-2 border-blue-500 rounded px-2"
+          class="border-2 border-black focus:border-blue-500 rounded px-2"
           type="text"
         />
         <div

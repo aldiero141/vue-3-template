@@ -6,8 +6,12 @@
     <template v-if="mode === 'form'">
       <Form @back="onMenu" />
     </template>
-    <template v-if="mode === 'OTP'"> <OtpPage @back="onMenu" /> </template>
-    <template v-if="mode === 'DOB'"> <DobPage @back="onMenu" /> </template>
+    <template v-if="mode === 'otp_verification'">
+      <OtpPage @back="onMenu" />
+    </template>
+    <template v-if="mode === 'dob_verification'">
+      <DobPage @back="onMenu" />
+    </template>
   </main>
 </template>
 
