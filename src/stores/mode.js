@@ -17,11 +17,16 @@ import { computed, ref } from "vue";
 export const useModeStore = defineStore("mode", () => {
   // SETTER
   const mode = ref("menu");
+  const view = ref("landing");
   // GETTER
   const getMode = computed(() => mode.value);
+  const getView = computed(() => view.value);
   // ACTION
   function setMode(val) {
     this.mode = val;
   }
-  return { mode, getMode, setMode };
+  function setState(val) {
+    this.view = val;
+  }
+  return { mode, view, getMode, getView, setMode, getView };
 });

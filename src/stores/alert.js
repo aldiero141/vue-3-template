@@ -29,7 +29,7 @@ export const useAlertStore = defineStore("alert", () => {
   // ACTION
   function setAlert(val) {
     this.type = val.type;
-    this.status = val.type;
+    this.status = val.status;
     this.message = val.message;
   }
   return {

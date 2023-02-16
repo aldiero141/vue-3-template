@@ -1,14 +1,19 @@
-import { createApp } from 'vue'
-import { createPinia } from 'pinia'
+import { createApp } from "vue";
+import { createPinia } from "pinia";
+import mdiVue from "mdi-vue/v3";
+import * as mdijs from "@mdi/js";
 
-import App from './App.vue'
-import router from './router'
+import App from "./App.vue";
+import router from "./router";
 
-import './assets/main.css'
+import "./assets/main.css";
 
-const app = createApp(App)
+const app = createApp(App);
+app.use(createPinia());
+app.use(mdiVue, {
+  icons: mdijs,
+});
 
-app.use(createPinia())
-app.use(router)
+app.use(router);
 
-app.mount('#app')
+app.mount("#app");

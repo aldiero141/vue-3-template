@@ -1,8 +1,8 @@
 <template>
-  <div>
-    <Alert v-if="status" :type="type" :message="message" />
+  <Alert :status="status" :type="type" :message="message" />
+  <AppBar>
     <RouterView />
-  </div>
+  </AppBar>
 </template>
 
 <script setup>
@@ -11,6 +11,7 @@ import { useAlertStore } from "./stores/alert";
 import { storeToRefs } from "pinia";
 import { onMounted, watch, reactive } from "vue";
 import Alert from "./components/Alert.vue";
+import AppBar from "./components/AppBar.vue";
 
 const store = useAlertStore();
 const { status, type, message } = storeToRefs(store);
