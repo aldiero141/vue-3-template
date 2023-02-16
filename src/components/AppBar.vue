@@ -15,7 +15,7 @@
 
     <div class="flex flex-row capitalize h-full">
       <div
-        class="w-[5rem] text-center flex-grow-1 rounded hover:bg-blue-400 hover:bg-opacity-50 text-white text-sm"
+        class="w-[5rem] text-center flex-grow-1 hover:bg-blue-400 hover:bg-opacity-50 text-white text-sm"
         v-for="(menu, index) in nav_menu"
         :key="index"
       >
