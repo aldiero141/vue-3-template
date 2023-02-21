@@ -4,6 +4,7 @@
   >
     <div class="flex flex-row m-2 h-full items-center">
       <mdicon
+        v-if="props.view == 'dashboard'"
         class="hover:bg-blue-400 hover:bg-opacity-50 cursor-pointer rounded-lg"
         name="menu"
         width="25"
@@ -28,7 +29,7 @@
 
   <transition name="slide">
     <div
-      v-if="isSidebarOpen"
+      v-if="props.view == 'dashboard' && isSidebarOpen"
       class="flex flex-col justify-between items-center w-[20vh] min-h-[95.1vh] bg-blue-400 absolute left-0 top-0 mt-10"
       style="z-index: 999"
     >
@@ -62,7 +63,16 @@
 <script setup>
 import moment from "moment";
 import router from "../router";
-import { ref } from "vue";
+import { watch, ref } from "vue";
+
+const props = defineProps({
+  view: String,
+});
+
+console.log(props.view);
+
+// watch(props.view, (newView) => {
+// });
 
 const year = moment().year();
 const isSidebarOpen = ref(false);
@@ -73,7 +83,7 @@ const nav_menu = [
 ];
 
 const side_menu = [
-  { name: "Menu 1", route: "/menu_1" },
+  { name: "Table", route: "/table" },
   { name: "Menu 2", route: "/menu_2" },
   { name: "Menu 3", route: "/menu_3" },
   { name: "Menu 4", route: "/menu_4" },

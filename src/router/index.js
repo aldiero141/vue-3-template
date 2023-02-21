@@ -1,6 +1,6 @@
 import { createRouter, createWebHistory } from "vue-router";
-import DashboardView from "../views/DashboardView.vue";
 import LandingView from "../views/LandingView.vue";
+import TableView from "../views/Dashboard/TableView.vue";
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -11,14 +11,19 @@ const router = createRouter({
       redirect: "/landing",
     },
     {
-      path: "/dashboard",
-      name: "dashboard",
-      component: DashboardView,
-    },
-    {
       path: "/landing",
       name: "landing",
       component: LandingView,
+    },
+    {
+      path: "/dashboard",
+      name: "dashboard",
+      redirect: "/dashboard/table",
+    },
+    {
+      path: "/dashboard/table",
+      name: "table",
+      component: TableView,
     },
     // {
     //   path: "/about",

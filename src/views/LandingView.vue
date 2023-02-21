@@ -23,9 +23,16 @@ import DobPage from "../components/DobPage.vue";
 
 import { storeToRefs } from "pinia";
 import { useModeStore } from "../stores/mode";
+import { useViewStore } from "../stores/view";
 
 const store = useModeStore();
 const { mode } = storeToRefs(store);
+store.setMode("menu");
+
+const storeView = useViewStore();
+const pathArray = window.location.pathname.split("/");
+const path = pathArray[1];
+storeView.setView(path);
 
 function onMenu() {
   store.setMode("menu");
