@@ -16,7 +16,12 @@ import ListButton from "./ListButton.vue";
 import { useModeStore } from "../stores/mode";
 import { ref, reactive } from "vue";
 
-const menus = ref(["Form", "OTP Verification", "DoB Verification"]);
+const menus = ref([
+  "Form",
+  "OTP Verification",
+  "DoB Verification",
+  "Camera Capture",
+]);
 
 const store = useModeStore();
 
@@ -24,5 +29,6 @@ function onClick(val) {
   if (val == "Form") store.setMode("form");
   if (val == "OTP Verification") store.setMode("otp_verification");
   if (val == "DoB Verification") store.setMode("dob_verification");
+  if (val == "Camera Capture") store.setMode("camera_capture");
 }
 </script>
