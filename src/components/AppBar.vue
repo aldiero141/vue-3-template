@@ -69,8 +69,6 @@ const props = defineProps({
   view: String,
 });
 
-console.log(props.view);
-
 // watch(props.view, (newView) => {
 // });
 

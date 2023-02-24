@@ -1,10 +1,14 @@
 <template>
   <div class="relative">
     <div
-      class="flex flex-col justify-center items-center px-16 rounded-lg bg-white border-2 border-dashed border-blue-400 h-[10rem] w-full z-9998"
+      class="flex flex-col justify-center items-center rounded-lg bg-white border-2 border-dashed border-blue-400 min-h-[10rem] w-full z-9998"
+      :class="{
+        'px-4': !props.image,
+        'px-6': props.image,
+      }"
     >
       <Button
-        v-if="!props.img"
+        v-if="!props.image"
         @click="$emit('button:clicked')"
         :text="'Open Camera'"
       />

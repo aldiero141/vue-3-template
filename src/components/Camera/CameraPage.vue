@@ -1,16 +1,7 @@
 <template>
   <div class="flex flex-col justify-center items-center h-[80vh]">
     <Overlay v-if="isShowCamera">
-      <mdicon
-        class="absolute top-2 right-2 hover:bg-blue-400 hover:bg-opacity-10 cursor-pointer rounded-lg"
-        name="close"
-        width="25"
-        height="25"
-        style="color: black; z-index: 9999"
-        @click="onClosedCamera"
-      />
-
-      <CameraView @on:capture="setCapture($event)" />
+      <CameraView @on:capture="setCapture($event)" @back="onClosedCamera" />
     </Overlay>
 
     <div

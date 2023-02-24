@@ -4,7 +4,7 @@
     style="z-index: 99999"
   >
     <div
-      class="bg-white opacity-100 rounded-lg"
+      class="bg-white opacity-100"
       style="z-index: 9999"
       :style="{
         width: props.width ? `${props.width}` : '100vw',

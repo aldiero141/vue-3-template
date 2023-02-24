@@ -142,6 +142,5 @@ function onPage(page) {
   const { data } = Paginator(items, page, 5);
   Object.assign(table_data, data);
   this.current_page = page;
-  console.log(page);
 }
 </script>
