@@ -4,7 +4,7 @@
     :total-pages="total_pages"
     :current-page="current_page"
     @on-page="
-      current_page < total_pages && current_page > 0 ? onPage($event) : []
+      current_page < total_pages + 1 && current_page > 0 ? onPage($event) : []
     "
     @prev-page="current_page > 1 ? onPage($event) : []"
     @next-page="current_page < total_pages ? onPage($event) : []"
@@ -59,31 +59,31 @@ const items = reactive([
     product: "Book 1",
     color: "White",
     category: "Odd",
-    price: "5000",
+    price: "99999",
   },
   {
     product: "Pencil 1",
     color: "Black",
     category: "Even",
-    price: "1000",
+    price: "99999",
   },
   {
     product: "Ruler 1",
     color: "Transparent",
     category: "Odd",
-    price: "3000",
+    price: "99999",
   },
   {
     product: "Eraser 1",
     color: "Grey",
     category: "Even",
-    price: "500",
+    price: "99999",
   },
   {
     product: "Gun 1",
     color: "Black",
     category: "Odd",
-    price: "50000",
+    price: "99999",
   },
   {
     product: "Book 2",

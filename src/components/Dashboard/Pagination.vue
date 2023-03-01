@@ -5,7 +5,7 @@
         <li>
           <a
             href="#"
-            class="block px-3 py-2 ml-0 leading-tight text-gray-500 bg-white border border-gray-300 rounded-l-lg hover:bg-gray-100 hover:text-gray-700"
+            class="block px-3 py-2 ml-0 leading-tight text-gray-500 bg-gray-100 border border-gray-300 rounded-l-lg hover:bg-blue-200 hover:text-gray-700"
             @click="emit('prevPage', prevPage)"
           >
             <span class="sr-only">Previous</span>
@@ -30,6 +30,9 @@
             <a
               href="#"
               class="px-3 py-2 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700"
+              :class="{
+                'bg-blue-300 text-white': currentPage == index + 1,
+              }"
               @click="emit('onPage', index + 1)"
               >{{ index + 1 }}</a
             >
@@ -38,7 +41,7 @@
         <li>
           <a
             href="#"
-            class="block px-3 py-2 leading-tight text-gray-500 bg-white border border-gray-300 rounded-r-lg hover:bg-gray-100 hover:text-gray-700"
+            class="block px-3 py-2 leading-tight text-gray-500 bg-gray-100 border border-gray-300 rounded-r-lg hover:bg-blue-200 hover:text-gray-700"
             @click="emit('nextPage', nextPage)"
           >
             <span class="sr-only">Next</span>
