@@ -1,5 +1,5 @@
 <template>
-  <div class="flex flex-col justify-center items-center h-[80vh]">
+  <div class="flex flex-col justify-center items-center w-full h-[80vh]">
     <Overlay v-if="isShowCamera">
       <CameraView @on:capture="setCapture($event)" @back="onClosedCamera" />
     </Overlay>

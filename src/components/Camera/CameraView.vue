@@ -1,14 +1,20 @@
 <template>
-  <div class="flex flex-col justify-center items-center">
+  <div class="flex flex-col justify-center items-center w-full">
     <mdicon
-      class="absolute top-2 right-2 hover:bg-blue-400 hover:bg-opacity-10 cursor-pointer rounded-lg"
+      class="absolute top-7 right-2 hover:bg-blue-400 hover:bg-opacity-10 cursor-pointer rounded-lg"
       name="close"
       width="25"
       height="25"
-      style="color: black; z-index: 9999"
+      style="color: white; z-index: 9999"
       @click="close()"
     />
-    <video v-if="!capturedImage[0]" id="video" autoplay playsinline />
+    <video
+      v-if="!capturedImage[0]"
+      class="w-full h-full"
+      id="video"
+      autoplay
+      playsinline
+    />
     <img
       v-if="capturedImage[0]"
       :src="capturedImage[0]"
@@ -115,8 +121,10 @@ async function capture() {
   const video = document.getElementById("video");
   const context = canvas.getContext("2d");
 
-  canvas.width = screen.width;
-  canvas.height = screen.height;
+  const videoHeight = video.videoHeight;
+  const videoWidth = video.videoWidth;
+  canvas.height = videoHeight;
+  canvas.width = videoWidth;
   context.drawImage(video, 0, 0, canvas.width, canvas.height);
 
   const getCanvasBlob = (canvas) => {

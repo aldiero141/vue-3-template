@@ -1,6 +1,6 @@
 <template>
   <div
-    class="flex flex-col justify-center items-center w-screen h-screen bg-opacity-70 bg-black absolute inset-0 -top-10"
+    class="flex flex-col justify-center items-center w-screen bg-opacity-70 bg-black fixed inset-0 overflow-hidden"
     style="z-index: 99999"
   >
     <div
