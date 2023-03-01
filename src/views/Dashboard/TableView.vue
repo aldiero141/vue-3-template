@@ -1,14 +1,30 @@
 <template>
-  <Table :data="table_data" />
-  <Pagination
-    :total-pages="total_pages"
-    :current-page="current_page"
-    @on-page="
-      current_page < total_pages + 1 && current_page > 0 ? onPage($event) : []
-    "
-    @prev-page="current_page > 1 ? onPage($event) : []"
-    @next-page="current_page < total_pages ? onPage($event) : []"
-  />
+  <div class="flex flex-col m-4 w-screen justify-center items-center">
+    <div class="flex flex-row justify-center">
+      <label
+        class="flex flex-row justify-start items-center border-2 border-gray-200 rounded px-2 mr-2 w-[70vw]"
+      >
+        <mdicon
+          class="text-gray-400 mr-2"
+          width="25"
+          height="25"
+          name="magnify"
+        />
+        <input class="h-full outline-none" type="text" />
+      </label>
+      <VueDatePicker v-model="date" />
+    </div>
+    <Table :data="table_data" />
+    <Pagination
+      :total-pages="total_pages"
+      :current-page="current_page"
+      @on-page="
+        current_page < total_pages + 1 && current_page > 0 ? onPage($event) : []
+      "
+      @prev-page="current_page > 1 ? onPage($event) : []"
+      @next-page="current_page < total_pages ? onPage($event) : []"
+    />
+  </div>
 </template>
 
 <script setup>
@@ -24,6 +40,8 @@ store.setView(path);
 
 const table_data = reactive([]);
 const current_page = ref(1);
+const date = ref();
+
 const items = reactive([
   {
     product: "Book",

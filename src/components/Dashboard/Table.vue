@@ -1,7 +1,9 @@
 <template>
-  <div class="flex flex-col items-center my-16 w-screen">
-    <div class="table relative overflow-x-auto shadow-lg w-[70vw] rounded">
-      <table class="w-full text-sm text-left text-gray-700 rounded">
+  <div class="flex flex-col items-center my-16 mx-4 w-screen">
+    <div
+      class="flex flex-col relative overflow-x-auto shadow-l w-full rounded items-center justify-center"
+    >
+      <table class="w-[90vw] text-sm text-left text-gray-700 rounded">
         <thead class="text-xs uppercase bg-blue-500 text-white">
           <tr>
             <th scope="col" class="px-6 py-3">Product name</th>
